@@ -1,3 +1,4 @@
+import csv
 telephone_dir = {"apple":9,"ball":10}
 basic_func = {1:"view",2:"insert",3:"delete",4:"search",5:"store in csv",6:"exit"}
 search_dir = {1:"by name",2:"by number"}
@@ -13,6 +14,8 @@ def option_selection():
     delete_op()
   elif (choice == "4"):
     search_op()
+  elif (choice == "5"):
+    write_to_cv()
   elif (choice == "6"):
     quit()
 
@@ -92,6 +95,15 @@ def view_available_option():
     print "%s\t%s" %(i[0],i[1])
   print "********************"
 
+def write_to_cv():
+  with open('contacts.csv', 'wb') as csv_file:
+    writer = csv.writer(csv_file)
+    for key, value in telephone_dir.items():
+       writer.writerow([key, value])
+    print "Stored in contacts.csv"
+    print "********************"
+    basic_operation()
+   
 def view_op():
   view_available_option()
   basic_operation()
