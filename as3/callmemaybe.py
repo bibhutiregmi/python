@@ -90,7 +90,7 @@ def view_available_option():
   print "Name\tPhone"
   for i in final_options:
     print "%s\t%s" %(i[0],i[1])
-  print "*********************"
+  print "********************"
 
 def view_op():
   view_available_option()
