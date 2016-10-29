@@ -27,14 +27,18 @@ def search_selection():
   else:
     search_num()
 
+def display_separator():
+  print("\n")
+  print "*********************"
+  print("\n")
+
+
 
 def basic_operation():
-  print "\n"
   for elements in basic_func:
     print elements,basic_func[elements]
-  print "*********************"
-  print
   option_selection()
+  display_separator()
 
 def search_op():
 
@@ -46,18 +50,15 @@ def insert_op():
   name = raw_input("Enter name: ")
   phone_no = raw_input("Enter phone number: ")
   telephone_dir[name] = phone_no
-  print
-  print "*********************"
   view_op()
-  print "\n"
+  display_separator()
   basic_operation()
 
 def display_record(no,name):
-  print
-  print "*********************"
+  display_separator()
   print "Record Found"
   print name,no
-  print "*********************"
+  display_separator()
 
 def search_num():
   search_no = raw_input("Number to search: ")
@@ -74,10 +75,10 @@ def delete_op():
   if name in telephone_dir:
     del telephone_dir[name]
     print "Deleted safely"
-    print "\n"
-    print "****************"
+    display_separator()
   else:
     print "Not found"
+    display_separator()
   view_op()
   
 def search_name():
@@ -89,19 +90,19 @@ def search_name():
   basic_operation()
 
 def view_available_option():
+  display_separator()
   final_options = sorted(telephone_dir.items())
   print "Name\tPhone"
   for i in final_options:
     print "%s\t%s" %(i[0],i[1])
-  print "********************"
+  display_separator()
 
 def write_to_cv():
   with open('contacts.csv', 'wb') as csv_file:
     writer = csv.writer(csv_file)
     for key, value in telephone_dir.items():
        writer.writerow([key, value])
-    print "Stored in contacts.csv"
-    print "********************"
+    display_separator()
     basic_operation()
    
 def view_op():
